@@ -25,6 +25,7 @@ import pkgCore.Player;
 import pkgCore.Table;
 import pkgCoreInterface.iCardDraw;
 import pkgEnum.eAction;
+import pkgEnum.eDrawCount;
 
 public class TexasHoldemController implements Initializable {
 
@@ -69,6 +70,9 @@ public class TexasHoldemController implements Initializable {
 	@FXML
 	private HBox HBoxCardsp9;
 
+	@FXML 
+	private HBox HboxCommon; 
+	
 	private Poker mainApp;
 
 	public void setMainApp(Poker mainApp) {
@@ -81,11 +85,17 @@ public class TexasHoldemController implements Initializable {
 	}
 
 	public void HandleDraw(ArrayList<DrawResult> lstDrawResult) {
+		
 
 		for (DrawResult DR : lstDrawResult) {
 			// This is the common cards
 			if (DR.getP() == null) {
-				//TODO: Handle the draw event for the common cards
+				//Handle the draw event for the common cards
+				for(iCardDraw c : DR.getCards()) {
+					ImageView iCardImg = BuildImage(c.getiCardNbr(), 0); 
+					AddCardToHbox("HboxCommon", iCardImg);
+					
+				}
 	
 				
 			}
@@ -210,6 +220,13 @@ public class TexasHoldemController implements Initializable {
 	private void btnStartGame(ActionEvent event) {
 		Action act = new Action(eAction.StartGamePoker, this.mainApp.getAppPlayer());
 		this.mainApp.messageSend(act);	}
+	
+	
+	@FXML
+	private void btnDraw(ActionEvent event) {
+		Action act = new Action(eAction.Draw, this.mainApp.getAppPlayer());
+		this.mainApp.messageSend(act);	
+	}
 
 	/**
 	 * btnSit - execute this action after the Sit/Leave button is clicked
