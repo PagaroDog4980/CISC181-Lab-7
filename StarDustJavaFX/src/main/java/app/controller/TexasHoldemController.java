@@ -86,6 +86,8 @@ public class TexasHoldemController implements Initializable {
 			// This is the common cards
 			if (DR.getP() == null) {
 				//TODO: Handle the draw event for the common cards
+	
+				
 			}
 			// This is the player cards
 			else if (DR.getP() != null) {

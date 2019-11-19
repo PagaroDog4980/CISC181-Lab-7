@@ -22,7 +22,7 @@ import pkgHelper.HandPokerHelper;
 
 public class TexasHoldemTest {
 
- 
+ /*
 	@Test
 	public void GenerateHands() throws DeckException, HandException {
 		Table t = new Table("my table");
@@ -89,7 +89,7 @@ public class TexasHoldemTest {
 			
 		}
 	}
-
+*/
 	
 	public void PrintHand(ArrayList<Card> cards, String strHandName)
 	{
